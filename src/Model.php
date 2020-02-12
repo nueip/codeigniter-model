@@ -1,6 +1,6 @@
 <?php
 
-namespace yidas;
+namespace nueip;
 
 use Exception;
 
