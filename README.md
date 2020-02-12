@@ -8,11 +8,10 @@
 
 CodeIgniter 3 Active Record (ORM) Standard Model supported Read & Write Connections
 
-[![Latest Stable Version](https://poser.pugx.org/yidas/codeigniter-model/v/stable?format=flat-square)](https://packagist.org/packages/yidas/codeigniter-model)
-[![Latest Unstable Version](https://poser.pugx.org/yidas/codeigniter-model/v/unstable?format=flat-square)](https://packagist.org/packages/yidas/codeigniter-model)
-[![License](https://poser.pugx.org/yidas/codeigniter-model/license?format=flat-square)](https://packagist.org/packages/yidas/codeigniter-model)
+[![Latest Stable Version](https://poser.pugx.org/nueip/codeigniter-model/v/stable)](https://packagist.org/packages/nueip/codeigniter-model)
+[![License](https://poser.pugx.org/nueip/codeigniter-model/license)](https://packagist.org/packages/nueip/codeigniter-model)
 
-This ORM Model extension is collected into [yidas/codeigniter-pack](https://github.com/yidas/codeigniter-pack) which is a complete solution for Codeigniter framework.
+This ORM Model extension is collected into [nueip/codeigniter-pack](https://github.com/nueip/codeigniter-pack) which is a complete solution for Codeigniter framework.
 
 FEATURES
 --------
@@ -30,62 +29,71 @@ This package provide Base Model which extended `CI_Model` and provided full CRUD
 OUTLINE
 -------
 
-- [Demonstration](#demonstration)
-- [Requirements](#requirements)
-- [Installation](#installation)
-- [Configuration](#configuration)
-- [Defining Models](#defining-models)
-  - [Table Names](#table-names)
-  - [Primary Keys](#primary-keys)
-  - [Timestamps](#timestamps)
-  - [Database Connection](#database-connection)
-- [Basic Usage](#basic-usage)
-  - [Methods](#methods)
-    - [find()](#find)
-      - [Query Builder Implementation](#query-builder-implementation)
-    - [reset()](#reset)
-    - [insert()](#insert)
-    - [batchInsert()](#batchinsert)
-    - [update()](#update)
-    - [batchUpdate()](#batchupdate)
-    - [replace()](#replace)
-    - [delete()](#delete)
-    - [getLastInsertID()](#getlastinsertid)
-    - [getAffectedRows()](#getaffectedrows)
-    - [count()](#count)
-    - [setAlias()](#setalias)
-- [Active Record (ORM)](#active-record-orm)
-  - [Inserts](#inserts)
-  - [Updates](#updates)
-  - [Deletes](#deletes)
-  - [Accessing Data](#accessing-data)
-  - [Methods](#methods-1)
-    - [findone()](#findone)
-    - [findAll()](#findall)
-    - [save()](#save)
-    - [toArray()](#toarray)
-- [Soft Deleted](#soft-deleted)
-  - [Configuration](#configuration-1)
-  - [Methods](#method-2)
-- [Query Scopes](#query-scopes)
-  - [Configuration](#configuration-2)
-  - [Methods](#method-3)
-- [Validation](#validation)
-  - [Validating Input](#validating-input)
-    - [validate()](#validate)
+- [<<<<<<< HEAD](#head)
+    - [Other settings](#other-settings)
+  - [>>>>>>> 4dbccda... [Rename] Rename namespace](#blockquote-blockquote-blockquote-blockquote-blockquote-blockquote-blockquote-4dbccda-rename-rename-namespace-blockquote-blockquote-blockquote-blockquote-blockquote-blockquote-blockquote)
+  - [BASIC USAGE](#basic-usage)
+    - [Methods](#methods)
+      - [`find()`](#find)
+        - [Query Builder Implementation](#query-builder-implementation)
+      - [`reset()`](#reset)
+      - [`insert()`](#insert)
+      - [`batchInsert()`](#batchinsert)
+      - [`replace()`](#replace)
+      - [`update()`](#update)
+      - [`batchUpdate()`](#batchupdate)
+      - [`delete()`](#delete)
+      - [`getLastInsertID()`](#getlastinsertid)
+      - [`getAffectedRows()`](#getaffectedrows)
+      - [`count()`](#count)
+      - [`setAlias()`](#setalias)
+  - [ACTIVE RECORD (ORM)](#active-record-orm)
+    - [Inserts](#inserts)
+    - [Updates](#updates)
+    - [Deletes](#deletes)
+    - [Accessing Data](#accessing-data)
+- [<<<<<<< HEAD](#head-1)
+    - [Relationships](#relationships)
+    - [Methods](#methods-1)
+      - [`findOne()`](#findone)
+      - [`findAll()`](#findall)
+      - [`save()`](#save)
+      - [`beforeSave()`](#beforesave)
+      - [`afterSave()`](#aftersave)
+      - [`hasOne()`](#hasone)
+      - [`hasMany()`](#hasmany)
+      - [`toArray()`](#toarray)
+  - [SOFT DELETED](#soft-deleted)
+    - [Configuration](#configuration-1)
+    - [Methods](#methods-2)
+      - [`forceDelete()`](#forcedelete)
+      - [`restore()`](#restore)
+      - [`withTrashed()`](#withtrashed)
+  - [QUERY SCOPES](#query-scopes)
+    - [Configuration](#configuration-2)
+    - [Methods](#methods-3)
+      - [`withoutGlobalScopes()`](#withoutglobalscopes)
+      - [`withAll()`](#withall)
+  - [VALIDATION](#validation)
+    - [Validating Input](#validating-input)
+      - [`validate()`](#validate)
     - [getErrors()](#geterrors)
-  - [Declaring Rules](#declaring-rules)
-    - [rules()](#rules)
-    - [Error Message with Language](#error-message-with-language)
-  - [Filters](#filters)
-    - [Filters()](#filters-1)
-- [Read & Write Connections](#read--write-connections)
-  - [Configuration](#configuration-3)
-  - [Load Balancing for Databases](#load-balancing-for-databases)
-  - [Reconnection](#reconnection)
-- [Pessimistic Locking](#pessimistic-locking)
-- [Helpers](#helpers)
-  - [indexBy()](#indexby)
+    - [Declaring Rules](#declaring-rules)
+      - [`rules()`](#rules)
+      - [Error Message with Language](#error-message-with-language)
+    - [Filters](#filters)
+      - [`filters()`](#filters-1)
+  - [READ & WRITE CONNECTIONS](#read--write-connections)
+    - [Configuration](#configuration-3)
+      - [Codeigniter DB Connection](#codeigniter-db-connection)
+      - [Codeigniter Database Key](#codeigniter-database-key)
+      - [Codeigniter Database Config Array](#codeigniter-database-config-array)
+    - [Load Balancing for Databases](#load-balancing-for-databases)
+    - [Reconnection](#reconnection)
+  - [PESSIMISTIC LOCKING](#pessimistic-locking)
+    - [Example Code](#example-code)
+  - [HELPERS](#helpers)
+      - [`indexBy()`](#indexby)
   
 ---
 
@@ -160,7 +168,7 @@ INSTALLATION
 
 Run Composer in your Codeigniter project under the folder `\application`:
 
-    composer require yidas/codeigniter-model
+    composer require nueip/codeigniter-model
     
 Check Codeigniter `application/config/config.php`:
 
@@ -175,24 +183,24 @@ $config['composer_autoload'] = TRUE;
 CONFIGURATION
 -------------
 
-After installation, `yidas\Model` class is ready to use. Simply, you could create a model to extend the `yidas\Model` directly:
+After installation, `nueip\Model` class is ready to use. Simply, you could create a model to extend the `nueip\Model` directly:
 
 ```php
-class Post_model extends yidas\Model {}
+class Post_model extends nueip\Model {}
 ```
 
 After that, this model is ready to use for example: `$this->PostModel->findOne(123);`
 
-However, the schema of tables such as primary key in your applicaiton may not same as default, and it's annoying to defind repeated schema for each model. We recommend you to make `My_model` to extend `yidas\Model` instead.
+However, the schema of tables such as primary key in your applicaiton may not same as default, and it's annoying to defind repeated schema for each model. We recommend you to make `My_model` to extend `nueip\Model` instead.
 
 ### Use My_model to Extend Base Model for every Models
 
-You could use `My_model` to extend `yidas\Model`, then make each model to extend `My_model` in Codeigniter application.
+You could use `My_model` to extend `nueip\Model`, then make each model to extend `My_model` in Codeigniter application.
 
-*1. Create `My_model` extended `yidas\Model` with configuration for fitting your common table schema:*
+*1. Create `My_model` extended `nueip\Model` with configuration for fitting your common table schema:*
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     protected $primaryKey = 'sn';
     const CREATED_AT = 'created_time';
@@ -218,21 +226,21 @@ $this->load->model('post_model', 'PostModel');
 $post = $this->PostModel->findOne(123);
 ```
 
-[My_model Example with Document](https://github.com/yidas/codeigniter-model/tree/master/example)
+[My_model Example with Document](https://github.com/nueip/codeigniter-model/tree/master/example)
 
 ---
 
 DEFINING MODELS
 ---------------
 
-To get started, let's create an model extends `yidas\Model` or through `My_model`, then define each model suitably.
+To get started, let's create an model extends `nueip\Model` or through `My_model`, then define each model suitably.
 
 ### Table Names
 
 By convention, the "snake case" with lowercase excluded `_model` postfix of the class name will be used as the table name unless another name is explicitly specified. So, in this case, Model will assume the `Post_model` model stores records in the `post` table. You may specify a custom table by defining a table property on your model:
 
 ```php
-// class My_model extends yidas\Model
+// class My_model extends nueip\Model
 class Post_model extends My_model
 {
     protected $table = "post_table";
@@ -266,7 +274,7 @@ $tableName = $this->PostModel->getTable();
 You may define a protected `$primaryKey` property to override this convention:
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     protected $primaryKey = "sn";
 }
@@ -279,7 +287,7 @@ class My_model extends yidas\Model
 By default, Model expects `created_at` and `updated_at` columns to exist on your tables. If you do not wish to have these columns automatically managed by base Model, set the `$timestamps` property on your model as `false`:
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     protected $timestamps = false;
 }
@@ -288,7 +296,7 @@ class My_model extends yidas\Model
 If you need to customize the format of your timestamps, set the `$dateFormat` property on your model. This property determines how date attributes are stored in the database:
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     /**
      * Date format for timestamps.
@@ -302,7 +310,7 @@ class My_model extends yidas\Model
 If you need to customize the names of the columns used to store the timestamps, you may set the `CREATED_AT` and `UPDATED_AT` constants in your model:
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     const CREATED_AT = 'created_time';
     const UPDATED_AT = 'updated_time';
@@ -312,7 +320,7 @@ class My_model extends yidas\Model
 Also, you could customized turn timestamps behavior off for specified column by assigning as empty:
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     const CREATED_AT = 'created_time';
     const UPDATED_AT = NULL;
@@ -324,7 +332,7 @@ class My_model extends yidas\Model
 By default, all models will use the default database connection `$this->db` configured for your application. If you would like to specify a different connection for the model, use the `$database` property:
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     protected $database = 'database2';
 }
@@ -332,6 +340,20 @@ class My_model extends yidas\Model
 
 > More Database Connection settings: [Read & Write Connections](#read--write-connections)
 
+<<<<<<< HEAD
+=======
+
+### Other settings
+
+```php
+class My_model extends nueip\Model
+{
+    // Enable ORM property check for write
+    protected $propertyCheck = true;
+}
+```
+
+>>>>>>> 4dbccda... [Rename] Rename namespace
 ---
 
 BASIC USAGE
@@ -432,7 +454,7 @@ public integer batchInsert(array $data, $runValidation=true)
 ```php
 $result = $this->Model->batchInsert([
      ['name' => 'Nick Tsai', 'email' => 'myintaer@gmail.com'],
-     ['name' => 'Yidas', 'email' => 'service@yidas.com']
+     ['name' => 'nueip', 'email' => 'service@nueip.com']
 ]);
 ```
 
@@ -637,6 +659,46 @@ $title = $post->title;
 $subtitle = $post['subtitle'];
 ```
 
+<<<<<<< HEAD
+=======
+### Relationships
+
+Database tables are often related to one another. For example, a blog post may have many comments, or an order could be related to the user who placed it. This library makes managing and working with these relationships easy, and supports different types of relationships:
+
+- [One To One](#hasone)
+- [One To Many](#hasmany)
+
+To work with relational data using Active Record, you first need to declare relations in models. The task is as simple as declaring a `relation method` for every interested relation, like the following,
+
+```php
+class CustomersModel extends nueip\Model
+{
+    // ...
+
+    public function orders()
+    {
+        return $this->hasMany('OrdersModel', ['customer_id' => 'id']);
+    }
+}
+```
+
+Once the relationship is defined, we may retrieve the related record using dynamic properties. Dynamic properties allow you to access relationship methods as if they were properties defined on the model:
+
+```php
+$orders = $this->CustomersModel->findOne(1)->orders;
+```
+
+> The dynamic properties' names are same as methods' names, like [Laravel Eloquent](https://laravel.com/docs/5.7/eloquent-relationships)
+
+For **Querying Relations**, You may query the `orders` relationship and add additional constraints with CI Query Builder to the relationship like so:
+
+```php
+$customer = $this->CustomersModel->findOne(1)
+
+$orders = $customer->orders()->where('active', 1)->get()->result_array();
+```
+
+>>>>>>> 4dbccda... [Rename] Rename namespace
 ### Methods
 
 #### `findOne()`
@@ -686,7 +748,106 @@ $this->Model->findAll();
 Active Record (ORM) save for insert or update
 
 ```php
+<<<<<<< HEAD
 public boolean save($runValidation=true)
+=======
+public boolean save(boolean $runValidation=true)
+```
+
+#### `beforeSave()`
+
+This method is called at the beginning of inserting or updating a active record
+
+
+```php
+public boolean beforeSave(boolean $insert)
+```
+
+*Example:*
+```
+public function beforeSave($insert)
+{
+    if (!parent::beforeSave($insert)) {
+        return false;
+    }
+
+    // ...custom code here...
+    return true;
+}
+```
+
+#### `afterSave()`
+
+This method is called at the end of inserting or updating a active record
+
+
+```php
+public boolean beforeSave(boolean $insert, array $changedAttributes)
+```
+
+#### `hasOne()`
+
+Declares a has-one relation
+
+
+```php
+public CI_DB_query_builder hasOne(string $modelName, string $foreignKey=null, string $localKey=null)
+```
+
+*Example:*
+```php
+class OrdersModel extends nueip\Model
+{
+    // ...
+    
+    public function customer()
+    {
+        return $this->hasOne('CustomersModel', 'id', 'customer_id');
+    }
+}
+```
+*Accessing Relational Data:*
+```php
+$this->load->model('OrdersModel');
+// SELECT * FROM `orders` WHERE `id` = 321
+$order = $this->OrdersModel->findOne(321);
+
+// SELECT * FROM `customers` WHERE `customer_id` = 321
+// $customer is a Customers active record
+$customer = $order->customer;
+```
+
+#### `hasMany()`
+
+Declares a has-many relation
+
+
+```php
+public CI_DB_query_builder hasMany(string $modelName, string $foreignKey=null, string $localKey=null)
+```
+
+*Example:*
+```php
+class CustomersModel extends nueip\Model
+{
+    // ...
+    
+    public function orders()
+    {
+        return $this->hasMany('OrdersModel', 'customer_id', 'id');
+    }
+}
+```
+*Accessing Relational Data:*
+```php
+$this->load->model('CustomersModel');
+// SELECT * FROM `customers` WHERE `id` = 123
+$customer = $this->CustomersModel->findOne(123);
+
+// SELECT * FROM `order` WHERE `customer_id` = 123
+// $orders is an array of Orders active records
+$orders = $customer->orders;
+>>>>>>> 4dbccda... [Rename] Rename namespace
 ```
 
 #### `toArray()`
@@ -717,7 +878,7 @@ In addition to actually removing records from your database, This Model can also
 You could enable SOFT DELETED feature by giving field name to `SOFT_DELETED`:
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     const SOFT_DELETED = 'is_deleted';
 }
@@ -726,7 +887,7 @@ class My_model extends yidas\Model
 While `SOFT_DELETED` is enabled, you could set `$softDeletedFalseValue` and `$softDeletedTrueValue` for fitting table schema. Futher, you may set `DELETED_AT` with column name for Timestapes feature, or disabled by setting to `NULL` by default:
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     const SOFT_DELETED = 'is_deleted';
     
@@ -743,7 +904,7 @@ class My_model extends yidas\Model
 If you need to disabled SOFT DELETED feature for specified model, you may set `SOFT_DELETED` to `false`, which would disable any SOFT DELETED functions including `DELETED_AT` feature:
 
 ```php
-// class My_model extends yidas\Model
+// class My_model extends nueip\Model
 class Log_model extends My_model
 {
     const SOFT_DELETED = false;
@@ -816,7 +977,7 @@ Query scopes allow you to add constraints to all queries for a given model. Writ
 You could override `_globalScopes` method to define your constraints:
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     protected $userAttribute = 'uid';
     
@@ -900,7 +1061,7 @@ if ($this->PostsModel->validate($inputData)) {
 }
 ```
 
-> The methods of `yidas\Model` for modifying such as `insert()` and `update()` will also perform validation. You can turn off `$runValidation` parameter of methods if you ensure that the input data has been validated.
+> The methods of `nueip\Model` for modifying such as `insert()` and `update()` will also perform validation. You can turn off `$runValidation` parameter of methods if you ensure that the input data has been validated.
 
 *Exmaple of ORM Model:*
 
@@ -944,7 +1105,7 @@ public array rules()
 *Example:*
 
 ```php
-class PostsModel extends yidas\Model
+class PostsModel extends nueip\Model
 {
     protected $table = "posts";
     
@@ -1043,7 +1204,7 @@ Sometimes you may wish to use one database connection for `SELECT` statements, a
 
 ### Configuration
 
-Read & Write Connections could be set in the model which extends `yidas\Model`, you could defind the read & write databases in extended `My_model` for every models.
+Read & Write Connections could be set in the model which extends `nueip\Model`, you could defind the read & write databases in extended `My_model` for every models.
 
 There are three types to set read & write databases:
 
@@ -1052,7 +1213,7 @@ There are three types to set read & write databases:
 It recommends to previously prepare CI DB connections, you could assign to attributes directly in construct section before parent's constrcut: 
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     function __construct()
     {
@@ -1074,7 +1235,7 @@ class My_model extends yidas\Model
 You could set the database key refered from `\application\config\database.php` into model attributes of `database` & `databaseRead`, the setting connections would be created automatically:
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     protected $database = 'default';
     
@@ -1089,7 +1250,7 @@ class My_model extends yidas\Model
 This way is used for the specified model related to the one time connected database in a request cycle, which would create a new connection per each model: 
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     protected $databaseRead = [
         'dsn'   => '',
@@ -1114,7 +1275,7 @@ $db['slave']['hostname'] = $slaveHosts[mt_rand(0, count($slaveHosts) - 1)];
 After that, you could use database key `slave` to load or assign it to attribute:
 
 ```php
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     protected $databaseRead = 'slave';
 }
