@@ -17,7 +17,7 @@
  * @since    \yidas\Mdoel 2.0.0
  * @see      https://github.com/yidas/codeigniter-model
  */
-class My_model extends yidas\Model
+class My_model extends nueip\Model
 {
     /* Configuration by Inheriting */
     
