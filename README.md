@@ -56,6 +56,7 @@ OUTLINE
     - [`replace()`](#replace)
     - [`update()`](#update)
     - [`batchUpdate()`](#batchupdate)
+    - [`batchUpdateMixed()`](#batchupdatemixed)
     - [`delete()`](#delete)
     - [`getLastInsertID()`](#getlastinsertid)
     - [`getAffectedRows()`](#getaffectedrows)
@@ -259,11 +260,11 @@ class Post_model extends My_model
 
 In our pattern, The naming between model class and table is the same, with supporting no matter singular or plural names:
 
-|Model Class Name|Table Name|
-|--|--|
-|Post_model|post|
-|Posts_model|posts|
-|User_info_model|user_info|
+| Model Class Name | Table Name |
+| ---------------- | ---------- |
+| Post_model       | post       |
+| Posts_model      | posts      |
+| User_info_model  | user_info  |
 
 #### Get Table Name
 
@@ -495,12 +496,28 @@ $result = $this->Model->update(['status'=>'off']);
 Update a batch of update queries into combined query strings.
 
 ```php
-public integer batchUpdate(array $dataSet, boolean $withAll=false, interger $maxLength=4*1024*1024, $runValidation=true)
+public integer batchUpdate(array $data, $index, integer $maxSize=100, $runValidation=true)
 ```
 
 *Example:*
 ```php
 $result = $this->Model->batchUpdate([
+    ['id'=>1, 'title'=>'A1', 'modified'=>'1'],
+    ['id'=>2, 'title'=>'A2', 'modified'=>'1'],
+], 'id');
+```
+
+#### `batchUpdateMixed()`
+
+Update a batch of update queries into combined query strings.
+
+```php
+public integer batchUpdateMixed(array $dataSet, boolean $withAll=false, interger $maxLength=4*1024*1024, $runValidation=true)
+```
+
+*Example:*
+```php
+$result = $this->Model->batchUpdateMixed([
     [['title'=>'A1', 'modified'=>'1'], ['id'=>1]],
     [['title'=>'A2', 'modified'=>'1'], ['id'=>2]],
 ]);
