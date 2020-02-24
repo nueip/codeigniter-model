@@ -697,7 +697,7 @@ class Model extends \CI_Model implements \ArrayAccess
         $sql = $this->_dbr->set($attributes)->get_compiled_update();
         $this->_dbr->reset_query();
 
-        return $this->_db->query($sql);
+        return strlen($sql) && $this->_db->query($sql);
     }
 
     /**
@@ -756,7 +756,8 @@ class Model extends \CI_Model implements \ArrayAccess
         }
 
         // Last batch of query
-        $result = $this->_db->query($sqlBatch);
+        $result = strlen($sqlBatch) && $this->_db->query($sqlBatch);
+        $sqlBatch = "";
 
         return ($result) ? $count + 1 : $count;
     }
