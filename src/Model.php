@@ -619,18 +619,27 @@ class Model extends \CI_Model implements \ArrayAccess
      *      ['name' => 'Yidas', 'email' => 'service@yidas.com']
      *  ]);
      */
-    public function batchInsert($data, $runValidation=true)
+    public function batchInsert($data, $runValidation = true)
     {
-        foreach ($data as $key => &$attributes) {
-
-            // Validation
-            if ($runValidation && false===$attributes=$this->validate($attributes, true))
-            return false; 
-
+        // Data format
+        foreach ($data as &$attributes) {
+            // Filter & Validation
+            if ($runValidation && false === $attributes = $this->validate($attributes, true)) {
+                return false;
+            }
+            // Before update event
             $this->_attrEventBeforeInsert($attributes);
         }
 
-        return $this->_db->insert_batch($this->table, $data);
+        if (count($data)) {
+            $this->_db->trans_start();
+            $affected = $this->_db->insert_batch($this->table, $data);
+            $this->_db->trans_complete();
+        } else {
+            $affected = 0;
+        }
+
+        return $affected;
     }
 
     /**
@@ -698,6 +707,43 @@ class Model extends \CI_Model implements \ArrayAccess
         $this->_dbr->reset_query();
 
         return strlen($sql) && $this->_db->query($sql);
+    }
+
+    /**
+     * Update a batch of rows with Timestamps feature into the associated database table using the attribute values of this record.
+     *
+     * @param array $data The rows to be batch update
+     * @param string $index
+     * @param integer $maxSize
+     * @param boolean $runValidation Whether to perform validation (calling validate()) before manipulate the record.
+     * @return int Number of rows inserted or FALSE on failure
+     * @example
+     *  $result = $this->Model->batchUpdate([
+     *      ['id' => '1', 'title'=>'A1', 'modified'=>'1'],
+     *      ['id' => '2', 'title'=>'B1', 'modified'=>'0']
+     *  ], 'id');
+     */
+    public function batchUpdate(array $data, $index, $maxSize = 100, $runValidation = true)
+    {
+        // Data format
+        foreach ($data as &$each) {
+            // Filter & Validation
+            if ($runValidation && false === $each = $this->validate($each, true)) {
+                return false;
+            }
+            // Before update event
+            $each = $this->_attrEventBeforeUpdate($each);
+        }
+
+        if (count($data)) {
+            $this->_db->trans_start();
+            $affected = $this->_db->update_batch($this->table, $data, $index, $maxSize);
+            $this->_db->trans_complete();
+        } else {
+            $affected = 0;
+        }
+
+        return $affected;
     }
 
     /**
