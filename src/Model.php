@@ -1236,17 +1236,20 @@ class Model extends \CI_Model implements \ArrayAccess
     {
         if ($this->timestamps && $field) {
 
-            switch ($this->dateFormat) {
-                case 'datetime':
-                    $dateFormat = date("Y-m-d H:i:s");
-                    break;
-                
-                case 'unixtime':
-                default:
-                    $dateFormat = time();
-                    break;
+            static $dateFormat = null;
+
+            if (!isset($dateFormat)) {
+                switch ($this->dateFormat) {
+                    case 'datetime':
+                        $dateFormat = date("Y-m-d H:i:s");
+                        break;
+                    case 'unixtime':
+                    default:
+                        $dateFormat = time();
+                        break;
+                }
             }
-            
+
             $attributes[$field] = $dateFormat;
         }
 
