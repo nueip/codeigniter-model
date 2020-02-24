@@ -571,7 +571,7 @@ class Model extends \CI_Model implements \ArrayAccess
     /**
      * reset an CI Query Builder instance with Model.
      *
-     * @return object Self
+     * @return Model
      * @example 
      *  $this->Model->reset()->find();
      */
@@ -938,7 +938,7 @@ class Model extends \CI_Model implements \ArrayAccess
     /**
      * Without SOFT_DELETED query conditions for next find()
      *
-     * @return object Self
+     * @return Model
      * @example 
      *  $this->Model->withTrashed()->find();
      */
@@ -952,7 +952,7 @@ class Model extends \CI_Model implements \ArrayAccess
     /**
      * Without Global Scopes query conditions for next find()
      *
-     * @return object Self
+     * @return Model
      * @example 
      *  $this->Model->withoutGlobalScopes()->find();
      */
@@ -967,7 +967,7 @@ class Model extends \CI_Model implements \ArrayAccess
      * Without all query conditions for next find()
      * That is, with all set of Models for next find()
      *
-     * @return object Self
+     * @return Model
      * @example 
      *  $this->Model->withAll()->find();
      */
@@ -1255,7 +1255,6 @@ class Model extends \CI_Model implements \ArrayAccess
     /**
      * The scope which not been soft deleted 
      *
-     * @param bool $skip Skip
      * @return bool Result
      */
     protected function _addSoftDeletedCondition()
@@ -1276,7 +1275,6 @@ class Model extends \CI_Model implements \ArrayAccess
     /**
      * The scope which not been soft deleted 
      *
-     * @param bool $skip Skip
      * @return bool Result
      */
     protected function _addGlobalScopeCondition()
