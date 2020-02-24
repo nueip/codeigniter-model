@@ -709,12 +709,12 @@ class Model extends \CI_Model implements \ArrayAccess
      * @param boolean $runValidation Whether to perform validation (calling validate()) before manipulate the record. 
      * @return integer Count of successful query pack(s)
      * @example 
-     *  $result = $this->Model->batchUpdate([
+     *  $result = $this->Model->batchUpdateMixed([
      *      [['title'=>'A1', 'modified'=>'1'], ['id'=>1]],
      *      [['title'=>'A2', 'modified'=>'1'], ['id'=>2]],
      *  ];);
      */
-    public function batchUpdate(Array $dataSet, $withAll=false, $maxLength=4*1024*1024, $runValidation=true)
+    public function batchUpdateMixed(Array $dataSet, $withAll=false, $maxLength=4194304, $runValidation=true)
     {
         $count = 0;
         $sqlBatch = '';
