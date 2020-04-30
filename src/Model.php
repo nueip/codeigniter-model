@@ -338,6 +338,7 @@ class Model extends \CI_Model implements \ArrayAccess
 
         // Load CodeIgniter library
         $this->load->library('form_validation');
+        $this->form_validation->reset_validation();
         $this->form_validation->set_data($data);
         $this->form_validation->set_rules($rules);
         // Run Validate
