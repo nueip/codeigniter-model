@@ -331,7 +331,7 @@ class Model extends \CI_Model implements \ArrayAccess
         // ORM re-assign properties
         $this->_writeProperties = (!$attributes) ? $data : $this->_writeProperties;
         // Get validation rules from function setting
-        $rules = $this->rules();
+        $rules = $this->rules($data);
 
         if (empty($rules) || empty($data))
             return ($returnData) ? $data : true;
