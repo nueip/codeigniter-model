@@ -1420,6 +1420,7 @@ class Model extends \CI_Model implements \ArrayAccess
      * @param mixed $value
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetSet($offset, $value) {
         
         $this->_writeProperties[$offset] = $value;
@@ -1431,6 +1432,7 @@ class Model extends \CI_Model implements \ArrayAccess
      * @param string $offset
      * @return bool Result
      */
+    #[\ReturnTypeWillChange]
     public function offsetExists($offset) {
 
         return isset($this->_readProperties[$offset]);
@@ -1442,6 +1444,7 @@ class Model extends \CI_Model implements \ArrayAccess
      * @param string $offset
      * @return void
      */
+    #[\ReturnTypeWillChange]
     public function offsetUnset($offset) {
 
         unset($this->_writeProperties[$offset]);
@@ -1453,6 +1456,7 @@ class Model extends \CI_Model implements \ArrayAccess
      * @param string $offset
      * @return mixed Value of property
      */
+    #[\ReturnTypeWillChange]
     public function offsetGet($offset) {
 
         if (isset($this->_writeProperties[$offset])) {
